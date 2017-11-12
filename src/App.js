@@ -11,7 +11,7 @@ class App extends Component {
           <h1 className="App-title">basic brian</h1>
         </header>
         <p className="App-intro">
-          content goes here
+          updated content
         </p>
       </div>
     );
