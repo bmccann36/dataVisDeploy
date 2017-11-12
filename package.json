@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "eslint": "^4.11.0",
+    "mapbox": "^1.0.0-beta9",
+    "mapbox-gl": "^0.41.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "victory": "^0.24.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,0 +1,30 @@
+
+.main {
+  display: flex;
+}
+
+.graphCont {
+
+  /* position: relative;
+  left:55em; */
+  background-color: lightskyblue;
+  flex: 2;
+  border: 3px solid #73AD21;
+  height: 50em;
+
+}
+
+.dashboard {
+  background-color: orange;
+  /* position: relative;
+  left:55em; */
+  flex: 2;
+  border: 3px solid #73AD21;
+  height: 50em;
+}
+
+.map {
+flex: 2;
+/* width: 25% */
+
+}
