@@ -70,7 +70,6 @@ export default function Chart2(props) {
                 if(d.value < d.average && a) return "lightBlue"  // highlight inner
                 if(d.value > d.average && !a)return "grey" // display average with inner
                 if(d.value > d.average && a)return "lightGrey" // highlight inner
-
               }),
               width: 40
             }
@@ -90,7 +89,6 @@ export default function Chart2(props) {
                 if(d.value > d.average && a) return "lightBlue"  // highlight outer
                 if(d.value < d.average && !a) return "grey"
                 if(d.value < d.average && a) return "lightGrey"
-
               }),
               width: 40
             }

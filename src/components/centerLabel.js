@@ -7,17 +7,13 @@ const red = { base: "tomato", highlight: "orangeRed" };const orange = { base: "g
 
 const innerRadius = 30;
 
-const directions = {
-  0: "E", 45: "NE", 90: "N", 135: "NW",
-  180: "W", 225: "SW", 270: "S", 315: "SE"
-};
 
 export default class CenterLabel extends React.Component {
   render() { // pass props down to center label
     // passing datum into this component so it can be looked up in directions
     // gets a datum prop from it's parent compoenent ****
     const {datum, active, color} = this.props;
-    console.log(this.props)
+    if(this.props.active) console.log(this.props)
     // console.log('datum._x',datum._x)
     // 0 , 45, 90, 135, etc...
     const text = datum.value
