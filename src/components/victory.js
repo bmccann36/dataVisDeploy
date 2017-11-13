@@ -8,7 +8,7 @@ import {
   VictoryStack
 } from 'victory'
 import CompassCenter from './compassCenter'
-import CenterLabel from './centerLabel'
+import CenterLabel from './centerLabel.1'
 
 const  _ =require('lodash')
 
