@@ -22,7 +22,7 @@ export default class Application extends React.Component {
     });
 
 
-    map.on('mousemove', (e) => {
+    map.on('mousedown', (e) => {
       const features = map.queryRenderedFeatures(e.point);
       this.props.setCoor(e.lngLat)
       map.getCanvas().style.cursor = features.length ? 'pointer' : '';

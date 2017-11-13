@@ -3,7 +3,6 @@ import logo from './logo.svg';
 // import Dashboard from './components/Dashboard'
 import Map from './components/Map'
 import GraphCont from './components/GraphCont'
-import Chart2 from './components/chart2'
 
 class App extends React.Component {
   constructor() {

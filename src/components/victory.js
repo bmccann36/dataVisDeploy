@@ -8,27 +8,50 @@ import {
   VictoryStack
 } from 'victory'
 
-const _ = require('lodash')
+const  _ =require('lodash')
+
+const directions = {
+  0: "E", 45: "NE", 90: "N", 135: "NW",
+  180: "W", 225: "SW", 270: "S", 315: "SE"
+};
+
+const orange = { base: "gold", highlight: "darkOrange" };
 
 const brian = { base: "purple", highlight: "pink"}
-const orange = { base: "gold", highlight: "darkOrange" };
+
 const red = { base: "tomato", highlight: "orangeRed" };
+
 const innerRadius = 30;
 
 
+export default class Victory extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { wind: this.getWindData() };
+  }
 
+  componentDidMount() {
+    // this.setStateInterval = window.setInterval(() => {
+      this.setState({ wind: this.getWindData() });
+    // }, 4000);
+    console.log(this.state)
+    // wind: Array(8)}
+    // {windSpeed: 21, windGust: 28, windBearing: 0}, {windSpeed: 21, windGust: 27, windBearing: 45}, {windSpeed: 4, windGust: 8, windBearing: 90}.....
+    // windbearing correspon to the keys in directions
+  }
 
-export default function Chart2(props) {
-  // console.log(props)
-  const crimes = props.topFive
+  getWindData() {
+    return _.keys(directions).map((d) => {
+      const speed = Math.floor(_.random() * 17) + 4;
+      return {
+        windSpeed: speed,
+        windGust: speed + _.random(2, 10),
+        windBearing: +d
+      };
+    });
+  }
 
-    const byType = {
-      0: crimes[0], 72: crimes[1], 144: crimes[2], 216: crimes[3],
-      288: crimes[4], 360: crimes[5]
-    };
-    // console.log(crimeCategories)
-console.log(crimes)
-// crimes.push({})
+  render() {
     return (
       <VictoryChart
         polar
@@ -62,8 +85,9 @@ console.log(crimes)
           tickFormat={() => ""}
         />
         <VictoryPolarAxis
-          labelPlacement="perpendicular"
-          tickValues={crimes.map((entry) => entry.crime)}
+          labelPlacement="parallel"
+          tickValues={_.keys(directions).map((k) => +k)}
+          tickFormat={_.values(directions)}
         />
         <VictoryStack>
           <VictoryBar  // inner bar
@@ -71,22 +95,22 @@ console.log(crimes)
               fill: (d, a) => a ? orange.highlight : orange.base, // fill: (d, a) => a ? brian.highlight : brian.base
               width: 40
             } }}
-            data={crimes} // array with windSpeed, windGust, windBearing, wind bearing is in increment degrees
-            x="crime"
-            y="value"
+            data={this.state.wind} // array with windSpeed, windGust, windBearing, wind bearing is in increment degrees
+            x="windBearing"
+            y="windSpeed"
           />
           <VictoryBar // the outer bar
             style={{ data: {  // a means active, active is boolean
               fill: (d, a) => a ? brian.highlight : brian.base, // fill: (d, a) => a ? red.highlight : red.base,
               width: 40
             } }}
-            data={crimes}
-            x="crime"
-            y={(d) => d+10}  // calculates data.windGust - data.windSpeed
+            data={this.state.wind}
+            x="windBearing"
+            y={(d) => d.windGust - d.windSpeed}  // calculates data.windGust - data.windSpeed
           />
-          </VictoryStack>
+        </VictoryStack>
 
       </VictoryChart>
     );
-
-}
+  }
+ }
