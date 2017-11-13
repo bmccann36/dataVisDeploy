@@ -100,6 +100,8 @@ export default class Victory extends React.Component {
             data={this.state.wind} // array with windSpeed, windGust, windBearing, wind bearing is in increment degrees
             x="windBearing"
             y="windSpeed"
+            labels
+            labelComponent={<CenterLabel color={orange}/>}
           />
           <VictoryBar // the outer bar
             style={{ data: {  // a means active, active is boolean

@@ -30,7 +30,7 @@ export default class GraphCont extends React.Component {
       <div className="graphCont" >
         {topFive && <Chart2 topFive={topFive} />
         }
-        <Victory />
+        {/* <Victory /> */}
         {/* <Graph topFive={topFive} /> */}
       </div>
     )
