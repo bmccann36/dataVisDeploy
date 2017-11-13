@@ -3,7 +3,7 @@ import logo from './logo.svg';
 // import Dashboard from './components/Dashboard'
 import Map from './components/Map'
 import GraphCont from './components/GraphCont'
-
+import Chart2 from './components/chart2'
 
 class App extends React.Component {
   constructor() {
@@ -37,7 +37,6 @@ class App extends React.Component {
       <div className="main">
         {/* <Dashboard coor={this.state} /> */}
         <Map setCoor={this.setCoor} />
-
         <GraphCont
           up={this.state.up}
           over={this.state.over}
