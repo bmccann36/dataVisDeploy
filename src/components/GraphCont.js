@@ -5,6 +5,10 @@ import Chart2 from './chart2'
 import Victory from './victory'
 
 
+const averages = { 'PETIT LARCENY': 23, 'HARRASSMENT 2': 18, 'ASSAULT 3 & RELATED OFFENSES': 17, 'CRIMINAL MISCHIEF & RELATED OF': 14, 'GRAND LARCENY': 14, 'OFF. AGNST PUB ORD SENSBLTY &': 7, 'DANGEROUS DRUGS': 19, 'FELONY ASSAULT': 10, ROBBERY: 5, 'MISCELLANEOUS PENAL LAW': 6, BURGLARY: 4, 'DANGEROUS WEAPONS': 6 }
+
+
+
 export default class GraphCont extends React.Component {
 
 
@@ -15,14 +19,20 @@ export default class GraphCont extends React.Component {
     const up = this.props.up
     const over = this.props.over
     if (up && grid[up] && grid[up][over]) topFive = grid[up][over]
-    // console.log(topFive)
+    // console.log('topFive', topFive)
+    if (topFive) {
+      topFive.forEach(record => {
+        const average = averages[record.crime]
+        record.average = average
+      })
+    }
     return (
       <div className="graphCont" >
-        {topFive && <Chart2 topFive= {topFive} />
+        {topFive && <Chart2 topFive={topFive} />
         }
         {/* <Victory /> */}
         {/* <Graph topFive={topFive} /> */}
       </div>
-   )
+    )
   }
 }
