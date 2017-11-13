@@ -7,6 +7,8 @@ import {
   VictoryLabel,
   VictoryStack
 } from 'victory'
+import CompassCenter from './compassCenter'
+import CenterLabel from './centerLabel'
 
 const  _ =require('lodash')
 
@@ -106,10 +108,12 @@ export default class Victory extends React.Component {
             } }}
             data={this.state.wind}
             x="windBearing"
-            y={(d) => d.windGust - d.windSpeed}  // calculates data.windGust - data.windSpeed
+            y={(d) => d.windGust - d.windSpeed}  // calculates  labels
+            labels
+            labelComponent={<CenterLabel color={red}/>}
           />
         </VictoryStack>
-
+      <CompassCenter />
       </VictoryChart>
     );
   }

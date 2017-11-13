@@ -63,11 +63,13 @@ export default function Chart2(props) {
         <VictoryBar  // inner bar
           style={{
             data: {
-              fill: (d, a) =>  d.value < d.average ? orange.base : brian.base, // fill: (d, a) => a ? brian.highlight : brian.base
+              fill:( (d, a) => {
+                return d.value < d.average ? orange.base : brian.base
+              }),
               width: 40
             }
           }}
-          data={crimes} // array with windSpeed, windGust, windBearing, wind bearing is in increment degrees
+          data={crimes}
           x="crime"
           y={(d)=> d.value < d.average ? d.value : d.average }
         />
