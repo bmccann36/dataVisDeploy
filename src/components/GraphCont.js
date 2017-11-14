@@ -22,7 +22,7 @@ export default class GraphCont extends React.Component {
     if (up && grid[up] && grid[up][over]) topFive = grid[up][over]
     if (topFive) {
       topFive.forEach(record => {
-        const average = averages[record.crime]
+        const average = averages[record.crime] || 0
         record.average = average
       })
 
@@ -34,7 +34,7 @@ export default class GraphCont extends React.Component {
           aboveAvg: entry.value > entry.average
         }
       })
-
+    console.log(topFive)
     }
     return (
       <div className="graphCont" >

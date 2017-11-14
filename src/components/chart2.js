@@ -20,7 +20,6 @@ const innerRadius = 30;
 
 
 export default function Chart2(props) {
-console.log(props)
   const crimes = props.topFive
   const data = props.data
 
@@ -65,9 +64,10 @@ console.log(props)
           style={{
             data: {
               fill:( (d, a) => {
-                if(d.aboveAvg) return "grey"
-                else return "blue"
-
+                if(d.aboveAvg && !a) return "grey"
+                if(d.aboveAvg && a) return "lightGrey"
+                if(!d.aboveAvg && !a) return "blue"
+                if(!d.aboveAvg && a) return "lightBlue"
               }),
               width: 40
             }
@@ -83,8 +83,10 @@ console.log(props)
             data: {  // a means active, active is boolean
             // YELLOW IS ACTUAL PURPLE IS AVERAGE
               fill:( (d, a) =>{
-                if(d.aboveAvg) return "blue"
-                else return "grey"
+                if(d.aboveAvg && !a) return "blue"
+                if(d.aboveAvg && a) return "lightBlue"
+                if(!d.aboveAvg && !a) return "grey"
+                if(!d.aboveAvg && a) return "lightGrey"
               }),
               width: 40
             }

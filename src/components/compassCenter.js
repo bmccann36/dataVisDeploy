@@ -11,7 +11,7 @@ export default class CompassCenter extends React.Component {
     render() {
       const { origin } = this.props;
       const circleStyle = {
-        stroke: red.base, strokeWidth: 2, fill: orange.base
+        stroke: "white", strokeWidth: 2, fill: "lightGreen"
       };
       return (
         <g>
