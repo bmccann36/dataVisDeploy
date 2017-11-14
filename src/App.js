@@ -4,7 +4,6 @@ import logo from './logo.svg';
 import Map from './components/Map'
 import GraphCont from './components/GraphCont'
 
-
 class App extends React.Component {
   constructor() {
     super()
@@ -37,7 +36,6 @@ class App extends React.Component {
       <div className="main">
         {/* <Dashboard coor={this.state} /> */}
         <Map setCoor={this.setCoor} />
-
         <GraphCont
           up={this.state.up}
           over={this.state.over}
