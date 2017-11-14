@@ -13,17 +13,17 @@ export default class CenterLabel extends React.Component {
     // passing datum into this component so it can be looked up in directions
     // gets a datum prop from it's parent compoenent ****
     const { datum, active, color } = this.props;
-    if (this.props.active) console.log(this.props)
-
-    // if avg is less than actual we are inside
-    // if datum._y1 > average we are showing actual
-
-
-    // let avgVsActual = datum._y1 >= datum.average ? 'average' : 'actual'
+    console.log(this.props)
+    const aboveAvg = datum.aboveAvg
     let inside = datum.y0 == 0
     let val = datum._y1
+    let message
+    if(val == datum.lowVal && aboveAvg) message = 'average'
+    if(val != datum.lowVal && aboveAvg) message = 'actual'
+    if(val == datum.lowVal && !aboveAvg) message = 'actual'
+    if(val != datum.lowVal && !aboveAvg) message = 'average'
 
-    let text = [val, 'crazy']
+    let text = [val, message]
     const baseStyle = { fill: color.highlight, textAnchor: "middle" };
     const style = [
       { ...baseStyle, fontSize: 18, fontWeight: "bold" },

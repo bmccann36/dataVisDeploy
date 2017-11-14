@@ -15,20 +15,33 @@ export default class GraphCont extends React.Component {
   render() {
     const dummy = this.state
     let topFive
+    let data
     // console.log(this.props, 'state in graph container')
     const up = this.props.up
     const over = this.props.over
     if (up && grid[up] && grid[up][over]) topFive = grid[up][over]
-    // console.log('topFive', topFive)
     if (topFive) {
       topFive.forEach(record => {
         const average = averages[record.crime]
         record.average = average
       })
+
+       data = topFive.map(entry => {
+        return {
+          crimeName: entry.crime,
+          lowVal: entry.value < entry.average ? entry.value : entry.average,
+          highVal: entry.value > entry.average ? entry.value - entry.average : entry.average - entry.value,
+          aboveAvg: entry.value > entry.average
+        }
+      })
+
     }
     return (
       <div className="graphCont" >
-        {topFive && <Chart2 topFive={topFive} />
+        {topFive && <Chart2
+        topFive={topFive}
+        data={data}
+         />
         }
         {/* <Victory /> */}
         {/* <Graph topFive={topFive} /> */}

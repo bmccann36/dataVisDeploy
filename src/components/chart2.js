@@ -20,10 +20,9 @@ const innerRadius = 30;
 
 
 export default function Chart2(props) {
-  // console.log(props)
+console.log(props)
   const crimes = props.topFive
-  console.log(crimes)
-
+  const data = props.data
 
   return (
     <VictoryChart
@@ -66,17 +65,16 @@ export default function Chart2(props) {
           style={{
             data: {
               fill:( (d, a) => {
-                if(d.value < d.average && !a) return "blue" // display value with inner
-                if(d.value < d.average && a) return "lightBlue"  // highlight inner
-                if(d.value > d.average && !a)return "grey" // display average with inner
-                if(d.value > d.average && a)return "lightGrey" // highlight inner
+                if(d.aboveAvg) return "grey"
+                else return "blue"
+
               }),
               width: 40
             }
           }}
-          data={crimes}
-          x="crime"
-          y={(d)=> d.value < d.average ? d.value : d.average } // if data is lesser we will display data
+          data={data}
+          x="crimeName"
+          y= "lowVal"
           labels
           labelComponent={<CenterLabel color={orange}/>}
         />
@@ -85,17 +83,15 @@ export default function Chart2(props) {
             data: {  // a means active, active is boolean
             // YELLOW IS ACTUAL PURPLE IS AVERAGE
               fill:( (d, a) =>{
-                if(d.value > d.average && !a)return "blue" // display value with outer
-                if(d.value > d.average && a) return "lightBlue"  // highlight outer
-                if(d.value < d.average && !a) return "grey"
-                if(d.value < d.average && a) return "lightGrey"
+                if(d.aboveAvg) return "blue"
+                else return "grey"
               }),
               width: 40
             }
           }}
-          data={crimes}
-          x="crime"
-          y={(d)=> d.value > d.average ? d.value : d.average } // if data is greater we will display data
+          data={data}
+          x="crimeName"
+          y="highVal" // if data is greater we will display data
           labels
           labelComponent={<CenterLabel color={orange}/>}
         />
