@@ -4,15 +4,17 @@
 }
 
 .graphCont {
-
-  /* position: relative;
-  left:55em; */
   background-color: lightskyblue;
   flex: 2;
   border: 3px solid #73AD21;
-  height: 50em;
-
+  height: 60em;
 }
+
+.map {
+  flex: 2;
+
+  }
+
 
 .dashboard {
   background-color: orange;
@@ -23,8 +25,43 @@
   height: 50em;
 }
 
-.map {
-flex: 2;
-/* width: 25% */
+.chart-component {
+  /* background-color: white; */
+  margin: 5em;
+}
 
+h1 {
+  font-size:3em;
+  font-weight: bold;
+  text-align: center;
+  line-height: 120%;
+  position: relative;
+  top: 5em
+}
+
+h3 {
+  font-size: 1.5em;
+  color: white;
+  text-align: center;
+}
+
+.key{
+  display: flex
+}
+
+.rectangle1 {
+  width:100px;
+  height:50px;
+  background:blue;
+}
+
+.rectangle2 {
+  width:100px;
+  height:50px;
+  background:grey;
+}
+
+.instruction {
+  padding: 1em;
+  font-size: 2em;
 }

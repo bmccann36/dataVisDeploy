@@ -16,7 +16,6 @@ export default class GraphCont extends React.Component {
     const dummy = this.state
     let topFive
     let data
-    // console.log(this.props, 'state in graph container')
     const up = this.props.up
     const over = this.props.over
     if (up && grid[up] && grid[up][over]) topFive = grid[up][over]
@@ -38,13 +37,13 @@ export default class GraphCont extends React.Component {
     }
     return (
       <div className="graphCont" >
-        {topFive && <Chart2
+
+        {topFive ? <Chart2
         topFive={topFive}
         data={data}
-         />
+         /> :
+         <h1 className="promt"> click anywhere in the five boroughs to start exploring </h1>
         }
-        {/* <Victory /> */}
-        {/* <Graph topFive={topFive} /> */}
       </div>
     )
   }
